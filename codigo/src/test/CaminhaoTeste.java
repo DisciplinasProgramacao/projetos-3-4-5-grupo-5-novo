@@ -1,6 +1,3 @@
-package test;
-
-import main.Caminhao;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
