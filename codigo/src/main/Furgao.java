@@ -1,5 +1,3 @@
-package main;
-
 public class Furgao extends Veiculo{
     public Furgao(double valorVenda, Integer kilometragem) {
         super(valorVenda, kilometragem);

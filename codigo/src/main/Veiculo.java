@@ -1,5 +1,3 @@
-package main;
-
 import java.util.Objects;
 
 public abstract class Veiculo {
@@ -22,15 +20,13 @@ public abstract class Veiculo {
     abstract double vistoria();
 
     public Veiculo[] carregar(String path) {
-        Veiculo[] v = new Veiculo[0];
 
-        return v;
+        return new Veiculo[0];
     }
 
     public Veiculo[] salvar(String path) {
-        Veiculo[] v = new Veiculo[0];
 
-        return v;
+        return new Veiculo[0];
     }
 
     public Veiculo incluir(Veiculo veiculo) {
@@ -38,9 +34,8 @@ public abstract class Veiculo {
     }
 
     public Rota addRota(String destino, String origem, Integer distancia) {
-        Rota r = new Rota(destino, origem, distancia);
 
-        return r;
+        return new Rota(destino, origem, distancia);
     }
 
     public Veiculo localizar(Veiculo veiculo) {

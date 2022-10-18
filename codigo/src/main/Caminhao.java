@@ -1,5 +1,3 @@
-package main;
-
 public class Caminhao extends Veiculo {
 
     public Caminhao(double valorVenda, Integer kilometragem) {
