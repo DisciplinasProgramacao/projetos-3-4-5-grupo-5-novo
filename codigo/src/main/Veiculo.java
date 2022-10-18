@@ -5,14 +5,16 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Veiculo {
+    public String placa;
     protected Integer tanque;
     protected double valorVenda;
     protected Integer kilometragem;
     protected List<Rota> rotas = new ArrayList<Rota>();
 
-    Veiculo(double valorVenda, Integer kilometragem) {
+    Veiculo(double valorVenda, Integer kilometragem, String placa) {
         this.valorVenda = valorVenda;
         this.kilometragem = Objects.requireNonNullElse(kilometragem, 0);
+        this.placa = placa;
     }
 
     abstract double ipva();
@@ -42,11 +44,6 @@ public abstract class Veiculo {
         return new Rota(destino, origem, distancia);
     }
 
-    public Veiculo localizar(Veiculo veiculo) {
-
-        return veiculo;
-    }
-
     public Integer getKilometragem() {
         Integer distancia = 0;
 
@@ -59,6 +56,10 @@ public abstract class Veiculo {
         distancia += this.kilometragem;
 
         return distancia;
+    }
+
+    public String getPlaca() {
+        return this.placa;
     }
 
     protected double formatar(double media) {
