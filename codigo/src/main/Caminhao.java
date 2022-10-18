@@ -16,13 +16,17 @@ public class Caminhao extends Veiculo {
     }
 
     @Override
-    double alinhamento() {
-        return 0;
+    public double alinhamento() {
+        double kilometragem = getKilometragem();
+
+        return 1000 * (kilometragem/20000);
     }
 
     @Override
     double vistoria() {
-        return 0;
+        double kilometragem = getKilometragem();
+
+        return this.formatar(1000 * (kilometragem/30000));
     }
 
 }

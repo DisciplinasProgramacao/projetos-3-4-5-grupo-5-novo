@@ -15,8 +15,10 @@ public class Carro extends Veiculo {
     }
 
     @Override
-    double alinhamento() {
-        return 0;
+    public double alinhamento() {
+        double kilometragem = getKilometragem();
+
+        return 80 * (kilometragem/10000);
     }
 
     @Override

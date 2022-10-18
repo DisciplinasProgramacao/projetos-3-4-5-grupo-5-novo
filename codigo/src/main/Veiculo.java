@@ -1,10 +1,14 @@
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Veiculo {
     protected Integer tanque;
     protected double valorVenda;
     protected Integer kilometragem;
-    protected Rota[] rotas;
+    protected List<Rota> rotas = new ArrayList<Rota>();
 
     Veiculo(double valorVenda, Integer kilometragem) {
         this.valorVenda = valorVenda;
@@ -43,13 +47,24 @@ public abstract class Veiculo {
         return veiculo;
     }
 
-    public void setKilometragem() {
+    public Integer getKilometragem() {
         Integer distancia = 0;
 
-        for(Rota rota : this.rotas) {
-            distancia += rota.getDistancia();
+        if(this.rotas.size() > 0) {
+            for (Rota rota : this.rotas) {
+                distancia += rota.getDistancia();
+            }
         }
 
         distancia += this.kilometragem;
+
+        return distancia;
+    }
+
+    protected double formatar(double media) {
+        DecimalFormat decimalFormat = new DecimalFormat("###.00");
+        decimalFormat.setRoundingMode(RoundingMode.DOWN);
+        String formatDecimal = decimalFormat.format(media);
+        return Double.parseDouble(formatDecimal.replace(",", "."));
     }
 }

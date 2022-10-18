@@ -15,4 +15,14 @@ public class CarroTeste {
     void seguroTeste() {
         Assertions.assertEquals(1300, carro.seguro());
     }
+
+    @Test
+    void getKilometragemTest() {
+        Assertions.assertEquals(100000, carro.getKilometragem());
+    }
+
+    @Test
+    void alinhamentoTeste() {
+        Assertions.assertEquals(800, carro.alinhamento());
+    }
 }

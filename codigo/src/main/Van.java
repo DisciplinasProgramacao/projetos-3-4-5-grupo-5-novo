@@ -15,12 +15,16 @@ public class Van extends Veiculo{
     }
 
     @Override
-    double alinhamento() {
-        return 0;
+    public double alinhamento() {
+        double kilometragem = getKilometragem();
+
+        return 120 * (kilometragem/10000);
     }
 
     @Override
     double vistoria() {
-        return 0;
+        double kilometragem = getKilometragem();
+
+        return this.formatar(500 * (kilometragem/10000));
     }
 }

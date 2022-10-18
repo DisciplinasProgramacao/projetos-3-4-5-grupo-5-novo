@@ -14,4 +14,19 @@ public class CaminhaoTeste {
     void seguroTeste() {
         Assertions.assertEquals(2400, caminhao.seguro());
     }
+
+    @Test
+    void getKilometragemTest() {
+        Assertions.assertEquals(100000, caminhao.getKilometragem());
+    }
+
+    @Test
+    void alinhamentoTeste() {
+        Assertions.assertEquals(5000, caminhao.alinhamento());
+    }
+
+    @Test
+    void vistoriaTeste() {
+        Assertions.assertEquals(3333.33, caminhao.vistoria());
+    }
 }
