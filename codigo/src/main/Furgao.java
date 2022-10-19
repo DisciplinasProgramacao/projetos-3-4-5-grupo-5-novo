@@ -1,28 +1,24 @@
-public class Furgao extends Veiculo{
-    public Furgao(double valorVenda, Integer kilometragem) {
-        super(valorVenda, kilometragem);
+public class Furgao extends Veiculo implements VeiculoGastos {
+    public Furgao(double valorVenda, Integer kilometragem, String placa) {
+        super(valorVenda, kilometragem, placa);
         this.tanque = 80;
     }
 
-    @Override
     public double ipva() {
         return 0.03 * this.valorVenda;
     }
 
-    @Override
     public double seguro() {
         return 0.03 * this.valorVenda;
     }
 
-    @Override
     public double alinhamento() {
         double kilometragem = getKilometragem();
 
         return 120 * (kilometragem/10000);
     }
 
-    @Override
-    double vistoria() {
+    public double vistoria() {
         double kilometragem = getKilometragem();
 
         return this.formatar(500 * (kilometragem/10000));

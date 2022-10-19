@@ -3,44 +3,23 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public abstract class Veiculo {
     public String placa;
     protected Integer tanque;
     protected double valorVenda;
     protected Integer kilometragem;
-    protected List<Rota> rotas = new ArrayList<Rota>();
+    protected List<Rota> rotas = new ArrayList<>();
 
-    Veiculo(double valorVenda, Integer kilometragem, String placa) {
+    public Veiculo(double valorVenda, Integer kilometragem, String placa) {
         this.valorVenda = valorVenda;
-        this.kilometragem = Objects.requireNonNullElse(kilometragem, 0);
+        this.kilometragem = kilometragem;
         this.placa = placa;
     }
 
-    abstract double ipva();
-
-    abstract double seguro();
-
-    abstract double alinhamento();
-
-    abstract double vistoria();
-
-    public Veiculo[] carregar(String path) {
-
-        return new Veiculo[0];
-    }
-
-    public Veiculo[] salvar(String path) {
-
-        return new Veiculo[0];
-    }
-
-    public Veiculo incluir(Veiculo veiculo) {
-        return  veiculo;
-    }
-
     public Rota addRota(String destino, String origem, Integer distancia) {
-
         return new Rota(destino, origem, distancia);
     }
 
