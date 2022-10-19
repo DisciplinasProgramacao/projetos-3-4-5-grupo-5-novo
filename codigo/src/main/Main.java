@@ -23,10 +23,10 @@ public class Main {
             System.out.println(valorInserido);
             switch (valorInserido) {
                 case 1:
-                    frota.carregarVeiculos();
+                    carregarVeiculos();
                     break;
                 case 2:
-                    frota.salvarVeiculos();
+                    salvarVeiculos();
                     break;
                 case 3:
                     localizarVeiculo();
@@ -53,6 +53,12 @@ public class Main {
                     break;
             }
         }
+    }
+
+    private static void salvarVeiculos() {
+    }
+
+    private static void carregarVeiculos() {
     }
 
     private static boolean inserirRota() throws Exception {

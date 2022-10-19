@@ -56,12 +56,6 @@ public class Frota {
 
     }
 
-    public void carregarVeiculos() {
-    }
-
-    public void salvarVeiculos() {
-    }
-
     private boolean validarPlaca(String placa) {
         Pattern pattern = Pattern.compile("[A-Z]{3}[0-9]{1}[A-Z]{1}[0-9]{2}|[A-Z]{3}[0-9]{4}");
         Matcher mat = pattern.matcher(placa);
