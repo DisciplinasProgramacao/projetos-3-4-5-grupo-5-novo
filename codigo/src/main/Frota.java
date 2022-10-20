@@ -13,27 +13,29 @@ public class Frota {
         String formatPlaca = formatPlaca(placa);
 
         if(validarPlaca(formatPlaca)) {
+            Veiculo veiculo = null;
             switch (tipo) {
                 case "carro" -> {
-                    Carro carro = new Carro(valorVenda, kilometragem, placa);
-                    veiculos.add(carro);
+                     veiculo = new Carro(valorVenda, kilometragem, placa);
+                    //veiculos.add(carro);
                 }
                 case "van" -> {
-                    Van van = new Van(valorVenda, kilometragem, placa);
-                    veiculos.add(van);
+                    veiculo = new Van(valorVenda, kilometragem, placa);
+                    //veiculos.add(van);
                 }
                 case "furgao" -> {
-                    Furgao furgao = new Furgao(valorVenda, kilometragem, placa);
-                    veiculos.add(furgao);
+                    veiculo = new Furgao(valorVenda, kilometragem, placa);
+                    //veiculos.add(furgao);
                 }
                 case "caminhao" -> {
-                    Caminhao caminhao = new Caminhao(valorVenda, kilometragem, placa);
-                    veiculos.add(caminhao);
+                    veiculo = new Caminhao(valorVenda, kilometragem, placa);
+                    //veiculos.add(caminhao);
                 }
                 default -> {
                     return "Tipo inserido nao existe";
                 }
             }
+            veiculos.add(veiculo);
 
             return "Inserido";
         }
