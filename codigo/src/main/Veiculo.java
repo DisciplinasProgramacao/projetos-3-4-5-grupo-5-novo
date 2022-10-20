@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class Veiculo {
-    public String placa;
+    private String placa;
     protected Integer tanque;
     protected double valorVenda;
     protected Integer kilometragem;
