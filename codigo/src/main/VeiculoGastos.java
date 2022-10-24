@@ -6,4 +6,6 @@ public interface VeiculoGastos {
     double alinhamento();
 
     double vistoria();
+
+    double custoTotal();
 }

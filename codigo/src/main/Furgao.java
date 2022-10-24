@@ -23,4 +23,8 @@ public class Furgao extends Veiculo implements VeiculoGastos {
 
         return this.formatar(500 * (kilometragem/10000));
     }
+
+    public double custoTotal(){
+        return ipva() + seguro() + alinhamento() + vistoria();
+     }
 }

@@ -20,5 +20,9 @@ public class Carro extends Veiculo implements VeiculoGastos {
     public double vistoria() {
         return 0;
     }
+
+    public double custoTotal(){
+       return ipva() + seguro() + alinhamento() + vistoria();
+    }
 }
 

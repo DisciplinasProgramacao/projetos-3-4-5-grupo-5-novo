@@ -5,6 +5,7 @@ import java.util.stream.IntStream;
 
 public class Main {
     static Frota frota = new Frota();
+
     public static void main(String[] args) throws Exception {
         int valorInserido = 1;
         while (valorInserido != 0) {
@@ -17,8 +18,7 @@ public class Main {
                             "4. Incluir veiculo\n" +
                             "5. Incluir rota\n" +
                             "6. Imprimir relatorio do veículo \n" +
-                            "0. Para terminar a aplicação \n"
-            );
+                            "0. Para terminar a aplicação \n");
             valorInserido = scanner.nextInt();
             System.out.println(valorInserido);
             switch (valorInserido) {
@@ -32,13 +32,13 @@ public class Main {
                     localizarVeiculo();
                     break;
                 case 4:
-                    if(inserirVeiculo())
+                    if (inserirVeiculo())
                         System.out.println("Veiculo inserida");
                     else
                         System.out.println("Houve um problema na insercao da veiculo");
                     break;
                 case 5:
-                    if(inserirRota())
+                    if (inserirRota())
                         System.out.println("Rota inserida");
                     else
                         System.out.println("Houve um problema na insercao da rota");
@@ -55,10 +55,33 @@ public class Main {
         }
     }
 
-    private static void salvarVeiculos() {
+    private static void salvarVeiculos(Veiculo veiculo) {
+        try {
+            FileOutputStream f = new FileOutputStream(new File("salvar.txt"));
+            ObjectOutputStream o = new ObjectOutputStream(f);
+            o.writeObject(veiculo);
+            o.close();
+            f.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println("Error initializing stream");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
-    private static void carregarVeiculos() {
+    private static Object carregarVeiculos() {
+        try {
+            FileInputStream a = new FileInputStream("salvar.txt");
+            ObjectInputStream c = new ObjectInputStream(a);
+            Object b = c.readObjetc();
+            c.close();
+            return b;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 
     private static boolean inserirRota() throws Exception {
@@ -74,7 +97,7 @@ public class Main {
         System.out.println("Placa");
         placa = scanner.next();
         veiculo = tryLocalizarVeiculo(placa);
-        if(veiculo == null) {
+        if (veiculo == null) {
             return false;
         }
 
@@ -106,11 +129,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         try {
             return frota.localizarVeiculo(placa);
-        } catch(Exception error) {
-            if(error.getMessage().equals("Carro não encontrado")) {
+        } catch (Exception error) {
+            if (error.getMessage().equals("Carro não encontrado")) {
                 System.out.println("Carro com a placa inserida não encontrado");
                 return null;
-            } else if(error.getMessage().equals("Placa Invalida")) {
+            } else if (error.getMessage().equals("Placa Invalida")) {
                 System.out.println("Insira uma placa valida");
                 placa = scanner.next();
                 return tryLocalizarVeiculo(placa);
@@ -142,19 +165,18 @@ public class Main {
 
         System.out.println(
                 "tipo (insira o numero correspondente ao tipo)\n" +
-                "1. Carro\n" +
-                "2. Van\n" +
-                "3. Furgao\n" +
-                "4. Caminhao\n"
-        );
+                        "1. Carro\n" +
+                        "2. Van\n" +
+                        "3. Furgao\n" +
+                        "4. Caminhao\n");
         tipoNumber = scanner.nextInt();
         tipo = getTipoByNumber(tipoNumber);
 
-       String status = frota.inserirVeiculo(valorVenda, kilometragem, placa, tipo);
-       if(status.equals("inserido"))
-           return true;
-       else
-           return false;
+        String status = frota.inserirVeiculo(valorVenda, kilometragem, placa, tipo);
+        if (status.equals("inserido"))
+            return true;
+        else
+            return false;
     }
 
     private static String getTipoByNumber(int tipoNumber) {

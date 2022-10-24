@@ -3,7 +3,7 @@ public class Rota {
     private final String destino;
     private final Integer distancia;
 
-    Rota(String origem, String destino, Integer distancia) {
+    public Rota(String origem, String destino, Integer distancia) {
         this.origem = origem;
         this.destino = destino;
         this.distancia = distancia;
