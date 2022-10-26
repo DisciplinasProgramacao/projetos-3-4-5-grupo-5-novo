@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,7 +27,8 @@ public class Main {
                     carregarVeiculos();
                     break;
                 case 2:
-                    salvarVeiculos();
+                    Carro carro = new Carro(15000, 200000, "crr123");
+                    salvarVeiculos(carro);
                     break;
                 case 3:
                     localizarVeiculo();
@@ -55,7 +57,7 @@ public class Main {
         }
     }
 
-    private static void salvarVeiculos(Veiculo veiculo) {
+    private static void salvarVeiculos(Veiculo veiculo) throws IOException {
         try {
             FileOutputStream f = new FileOutputStream(new File("salvar.txt"));
             ObjectOutputStream o = new ObjectOutputStream(f);
@@ -66,8 +68,6 @@ public class Main {
             System.out.println("File not found");
         } catch (IOException e) {
             System.out.println("Error initializing stream");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
     }
 
@@ -75,7 +75,7 @@ public class Main {
         try {
             FileInputStream a = new FileInputStream("salvar.txt");
             ObjectInputStream c = new ObjectInputStream(a);
-            Object b = c.readObjetc();
+            Object b = c.readObject();
             c.close();
             return b;
         } catch (Exception ex) {

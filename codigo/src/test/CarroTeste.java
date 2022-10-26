@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class CarroTeste {
 
-    Carro carro = new Carro(20000, 100000);
+    Carro carro = new Carro(20000, 100000, "crr123");
 
     @Test
     void ipvaTeste() {

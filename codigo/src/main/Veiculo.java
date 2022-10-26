@@ -2,16 +2,18 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public abstract class Veiculo {
+    protected double ipva;
+    protected double seguro;
+    protected double alinhamento;
     private String placa;
     protected Integer tanque;
     protected double valorVenda;
-    protected Integer kilometragem;
+    protected double kilometragem;
     protected List<Rota> rotas = new ArrayList<>();
+
+    protected VeiculoGastos gastos = new VeiculoGastos(this);
 
     public Veiculo(double valorVenda, Integer kilometragem, String placa) {
         this.valorVenda = valorVenda;
@@ -23,8 +25,8 @@ public abstract class Veiculo {
         return new Rota(destino, origem, distancia);
     }
 
-    public Integer getKilometragem() {
-        Integer distancia = 0;
+    public double getKilometragem() {
+        double distancia = 0;
 
         if(this.rotas.size() > 0) {
             for (Rota rota : this.rotas) {

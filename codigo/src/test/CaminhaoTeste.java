@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 public class CaminhaoTeste {
 
-    Caminhao caminhao = new Caminhao(20000, 100000);
+    Caminhao caminhao = new Caminhao(20000, 100000, "cmh123");
 
     @Test
     void ipvaTeste() {

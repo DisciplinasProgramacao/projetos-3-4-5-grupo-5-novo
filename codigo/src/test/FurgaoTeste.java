@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 public class FurgaoTeste {
 
-    Furgao furgao = new Furgao(20000, 100000);
+    Furgao furgao = new Furgao(20000, 100000, "frg123");
 
     @Test
     void ipvaTeste() {

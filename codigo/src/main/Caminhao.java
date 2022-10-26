@@ -1,4 +1,5 @@
-public class Caminhao extends Veiculo implements VeiculoGastos {
+public class Caminhao extends Veiculo {
+    private double vistoria;
 
     public Caminhao(double valorVenda, Integer kilometragem, String placa) {
         super(valorVenda, kilometragem, placa);
@@ -6,23 +7,21 @@ public class Caminhao extends Veiculo implements VeiculoGastos {
     }
 
     public double ipva() {
-        return 0.01 * this.valorVenda;
+        return gastos.ipva(0.01);
     }
 
     public double seguro() {
-        return 0.02 * this.valorVenda + 2000;
+        return gastos.seguro(0.02, 2000);
     }
 
     public double alinhamento() {
-        double kilometragem = getKilometragem();
-
-        return 1000 * (kilometragem/20000);
+        return gastos.alinhamento(1000, 20000);
     }
 
     public double vistoria() {
         double kilometragem = getKilometragem();
 
-        return this.formatar(1000 * (kilometragem/30000));
+        return this.formatar(gastos.vistoria(1000, 30000));
     }
 
 }
