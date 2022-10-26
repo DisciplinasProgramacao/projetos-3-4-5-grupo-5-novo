@@ -4,43 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Veiculo {
-    protected double ipva;
-    protected double seguro;
-    protected double alinhamento;
-    private String placa;
+    private final String placa;
     protected Integer tanque;
     protected double valorVenda;
     protected double kilometragem;
     protected List<Rota> rotas = new ArrayList<>();
 
-    protected VeiculoGastos gastos = new VeiculoGastos(this);
+    protected VeiculoGastos gastos = null;
+
 
     public Veiculo(double valorVenda, Integer kilometragem, String placa) {
         this.valorVenda = valorVenda;
         this.kilometragem = kilometragem;
         this.placa = placa;
+        setGastos();
     }
 
+    protected abstract void setGastos();
+
     public Rota addRota(String destino, String origem, Integer distancia) {
+        novaKilometragem(distancia);
         return new Rota(destino, origem, distancia);
     }
 
+    private void novaKilometragem(Integer distancia) {
+        this.kilometragem += distancia;
+    }
+
     public double getKilometragem() {
-        double distancia = 0;
-
-        if(this.rotas.size() > 0) {
-            for (Rota rota : this.rotas) {
-                distancia += rota.getDistancia();
-            }
-        }
-
-        distancia += this.kilometragem;
-
-        return distancia;
+        return this.kilometragem;
     }
 
     public String getPlaca() {
         return this.placa;
+    }
+
+    public double custoTotal() {
+        return gastos.custoTotal();
     }
 
     protected double formatar(double media) {
@@ -49,4 +49,5 @@ public abstract class Veiculo {
         String formatDecimal = decimalFormat.format(media);
         return Double.parseDouble(formatDecimal.replace(",", "."));
     }
+
 }

@@ -7,12 +7,12 @@ public class VanTeste {
 
     @Test
     void ipvaTeste() {
-        Assertions.assertEquals(600, van.ipva());
+        Assertions.assertEquals(600, van.gastos.getIpva());
     }
 
     @Test
     void seguroTeste() {
-        Assertions.assertEquals(600, van.seguro());
+        Assertions.assertEquals(600, van.gastos.getSeguro());
     }
 
     @Test
@@ -22,11 +22,11 @@ public class VanTeste {
 
     @Test
     void alinhamentoTeste() {
-        Assertions.assertEquals(1200, van.alinhamento());
+        Assertions.assertEquals(1200, van.gastos.getAlinhamento());
     }
 
     @Test
     void vistoriaTeste() {
-        Assertions.assertEquals(5000, van.vistoria());
+        Assertions.assertEquals(5000, van.gastos.getVistoria());
     }
 }

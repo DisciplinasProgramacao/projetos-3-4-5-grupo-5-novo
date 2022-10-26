@@ -3,16 +3,16 @@ import org.junit.jupiter.api.Test;
 
 public class CaminhaoTeste {
 
-    Caminhao caminhao = new Caminhao(20000, 100000, "cmh123");
+    Veiculo caminhao = new Caminhao(20000, 100000, "cmh1234");
 
     @Test
     void ipvaTeste() {
-        Assertions.assertEquals(200, caminhao.ipva());
+        Assertions.assertEquals(200, caminhao.gastos.getIpva());
     }
 
     @Test
     void seguroTeste() {
-        Assertions.assertEquals(2400, caminhao.seguro());
+        Assertions.assertEquals(2400, caminhao.gastos.getSeguro());
     }
 
     @Test
@@ -21,12 +21,12 @@ public class CaminhaoTeste {
     }
 
     @Test
-    void alinhamentoTeste() {
-        Assertions.assertEquals(5000, caminhao.alinhamento());
+    void manutencaoTeste() {
+        Assertions.assertEquals(5000, caminhao.gastos.getManutencao());
     }
 
     @Test
     void vistoriaTeste() {
-        Assertions.assertEquals(3333.33, caminhao.vistoria());
+        Assertions.assertEquals(3333.33, caminhao.gastos.getVistoria());
     }
 }

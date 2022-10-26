@@ -4,16 +4,16 @@ import org.junit.jupiter.api.Test;
 
 public class CarroTeste {
 
-    Carro carro = new Carro(20000, 100000, "crr123");
+    Veiculo carro = new Carro(20000, 100000, "crr1234");
 
     @Test
     void ipvaTeste() {
-        Assertions.assertEquals(800, carro.ipva());
+        Assertions.assertEquals(800, carro.gastos.getIpva());
     }
 
     @Test
     void seguroTeste() {
-        Assertions.assertEquals(1300, carro.seguro());
+        Assertions.assertEquals(1300, carro.gastos.getSeguro());
     }
 
     @Test
@@ -23,6 +23,6 @@ public class CarroTeste {
 
     @Test
     void alinhamentoTeste() {
-        Assertions.assertEquals(800, carro.alinhamento());
+        Assertions.assertEquals(800, carro.gastos.getAlinhamento());
     }
 }

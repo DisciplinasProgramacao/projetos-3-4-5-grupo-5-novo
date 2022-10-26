@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 public class Main {
-    static Frota frota = new Frota();
+    static Frota frota = new Frota("A");
 
     public static void main(String[] args) throws Exception {
         int valorInserido = 1;
@@ -35,9 +35,9 @@ public class Main {
                     break;
                 case 4:
                     if (inserirVeiculo())
-                        System.out.println("Veiculo inserida");
+                        System.out.println("Veiculo inserido");
                     else
-                        System.out.println("Houve um problema na insercao da veiculo");
+                        System.out.println("Houve um problema na insercao da veiculo\n");
                     break;
                 case 5:
                     if (inserirRota())
@@ -46,7 +46,8 @@ public class Main {
                         System.out.println("Houve um problema na insercao da rota");
                     break;
                 case 6:
-                    System.out.println("Implementação em construção volte mais tarde");
+                    gerarRelatorio();
+                    break;
                 case 0:
                     System.out.println("Fim");
                     break;
@@ -54,6 +55,18 @@ public class Main {
                     System.out.println("Opcao selecionada nao existe");
                     break;
             }
+        }
+    }
+
+    private static void gerarRelatorio() {
+        System.out.println("Veiculos Frota  " + frota.getName());
+        System.out.println("Placa\tGastos");
+
+        for(Veiculo veiculo : frota.getVeiculos()) {
+            String placa = veiculo.getPlaca();
+            double gastos = veiculo.custoTotal();
+
+            System.out.println(placa+ "\t" + gastos);
         }
     }
 
@@ -143,7 +156,7 @@ public class Main {
         }
     }
 
-    private static boolean inserirVeiculo() {
+    private static boolean inserirVeiculo() throws Exception {
         Scanner scanner = new Scanner(System.in);
 
         String placa;
@@ -173,7 +186,8 @@ public class Main {
         tipo = getTipoByNumber(tipoNumber);
 
         String status = frota.inserirVeiculo(valorVenda, kilometragem, placa, tipo);
-        if (status.equals("inserido"))
+        System.out.println(status);
+        if (status.equals("Inserido"))
             return true;
         else
             return false;
